@@ -24,5 +24,5 @@ EXPOSE 1389
 EXPOSE 1110
 #smtp
 EXPOSE 1025
-
+#WORKDIR /davmail
 CMD ["/davmail/davmail.sh","/davmail/davmail.properties"]
