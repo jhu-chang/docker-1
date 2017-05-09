@@ -7,7 +7,8 @@ RUN apt-get update && apt-get install curl unzip software-properties-common -y &
 	apt-get install openjdk-"${VERSION}"-jdk -y --no-install-recommends && \
 	apt-get autoclean && apt-get --purge -y autoremove && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-RUN mkdir -p /davmail && cd /davmail && curl --silent --retry 3 https://svwh.dl.sourceforge.net/project/davmail/davmail/4.8.0/davmail-4.8.0-2479.zip | tar -x 
+
+RUN mkdir -p /davmail && cd /davmail && curl --silent --retry 3 https://svwh.dl.sourceforge.net/project/davmail/davmail/4.8.0/davmail-4.8.0-2479.zip -o davmail.zip && unzip davmail.zip && rm davmail.zip && chmod +x /davmail/davmail.sh
 RUN cd /davmail && keytool -genkey -keyalg rsa -keysize 2048 -storepass password -keystore davmail.p12 -storetype \
                     pkcs12 -validity 3650 -dname cn=davmailhostname.company.com,ou=davmail,o=sf,o=net
 ADD davmail.properties /davmail/
