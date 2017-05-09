@@ -25,4 +25,4 @@ EXPOSE 1110
 #smtp
 EXPOSE 1025
 
-CMD [/davmail/davmail.sh /davmail/davmail.properties]
+CMD ["/davmail/davmail.sh","/davmail/davmail.properties"]
