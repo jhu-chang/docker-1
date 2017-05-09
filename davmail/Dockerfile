@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install curl unzip software-properties-common -y &
 RUN mkdir -p /davmail && cd /davmail && curl --silent --retry 3 https://svwh.dl.sourceforge.net/project/davmail/davmail/4.8.0/davmail-4.8.0-2479.zip -o davmail.zip && unzip davmail.zip && rm davmail.zip && chmod +x /davmail/davmail.sh
 RUN cd /davmail && keytool -genkey -keyalg rsa -keysize 2048 -storepass password -keystore davmail.p12 -storetype \
                     pkcs12 -validity 3650 -dname cn=davmailhostname.company.com,ou=davmail,o=sf,o=net
-ADD davmail.properties /davmail/
+ADD ./davmail.properties /davmail/
 
 ENV JAVA_HOME /usr/lib/jvm/java-${VERSION}-openjdk-amd64
 # caldav
