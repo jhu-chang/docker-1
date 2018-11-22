@@ -1,0 +1,18 @@
+version: '2'
+services:
+  davmail:
+    build: .
+    image: davmail
+    container_name: davmail
+    restart: unless-stopped
+    ports:
+      - "11080:1080"
+      - "11143:1143"
+      - "11389:1389"
+      - "11110:1110"
+      - "11025:1025"
+    #command: [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
+    #environment:
+        # env here
+    #volumes:
+      # Data persistency
